@@ -26,7 +26,7 @@
 		<tr>
 			<td width=20%><button name="deleteCustomer"
 					value="<%=customer.getId().getValue()%>">Delete</button></td>
-			<td wodth=80%><%=customer.getName()%></td>
+			<td width=80%><%=customer.getName()%></td>
 		</tr>
 		<%
 			}

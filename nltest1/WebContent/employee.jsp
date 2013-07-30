@@ -16,14 +16,14 @@
 		<tr>
 			<td width=20%><button name="deleteEmployee"
 					value="<%=employee.getId().getValue()%>" disabled>Delete</button></td>
-			<td wodth=80%><%=employee.getName()%></td>
+			<td width=80%><%=employee.getName()%></td>
 		</tr>
 		<%
 			}
 			}
 		%>
 		<tr>
-			<td><button type="submit">Add Employee</button></td>
+			<td><button type="submit" disabled>Add Employee</button></td>
 			<td><input type="text" name="employeeName" /></td>
 		</tr>
 	</table>
