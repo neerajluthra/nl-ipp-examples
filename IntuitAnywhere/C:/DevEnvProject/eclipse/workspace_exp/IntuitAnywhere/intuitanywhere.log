@@ -1,0 +1,69 @@
+0    [main] DEBUG com.intuit.platform  - RealmId: 757566405 
+0    [main] DEBUG com.intuit.platform  - RealmId: 757566405 
+2    [main] DEBUG com.intuit.platform  - Application ID: null Application token: d6068e13b6fc4b4621bb338be8d05e2be3f9
+2    [main] DEBUG com.intuit.platform  - Application ID: null Application token: d6068e13b6fc4b4621bb338be8d05e2be3f9
+6    [main] DEBUG com.intuit.platform  - Caught benign exception getting config property - using default.
+6    [main] DEBUG com.intuit.platform  - Caught benign exception getting config property - using default.
+7    [main] DEBUG com.intuit.platform  - [Issuing request: GET to end point: https://qbo.intuit.com/qbo1/rest/user/v2/757566405]
+7    [main] DEBUG com.intuit.platform  - [Issuing request: GET to end point: https://qbo.intuit.com/qbo1/rest/user/v2/757566405]
+293  [main] DEBUG com.intuit.platform  - Sending request to: https://qbo.intuit.com/qbo1/rest/user/v2/757566405
+293  [main] DEBUG com.intuit.platform  - Sending request to: https://qbo.intuit.com/qbo1/rest/user/v2/757566405
+296  [main] DEBUG com.intuit.platform  - Authorization: OAuth oauth_token="qyprdwdSiFLSGjAKvWAgM0aaDLEM8LYEVok96t1SMGoedFzH", oauth_consumer_key="qyprd0iDIIFPokUn7reIOPkr7KuJLA", oauth_version="1.0", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1376085060", oauth_nonce="3813164388375567534", oauth_signature="tSy2jBEI%2FMPDz%2BbrskYPZJQ0R90%3D"
+296  [main] DEBUG com.intuit.platform  - Authorization: OAuth oauth_token="qyprdwdSiFLSGjAKvWAgM0aaDLEM8LYEVok96t1SMGoedFzH", oauth_consumer_key="qyprd0iDIIFPokUn7reIOPkr7KuJLA", oauth_version="1.0", oauth_signature_method="HMAC-SHA1", oauth_timestamp="1376085060", oauth_nonce="3813164388375567534", oauth_signature="tSy2jBEI%2FMPDz%2BbrskYPZJQ0R90%3D"
+1823 [main] WARN  org.apache.http.impl.client.DefaultHttpClient  - Authentication error: Unable to respond to any of these challenges: {}
+1825 [main] ERROR com.intuit.platform  - Error: 401 <?xml version="1.0" encoding="UTF-8" standalone="yes"?><FaultInfo xmlns="http://www.intuit.com/sb/cdm/baseexceptionmodel/xsd"><Message>Unauthorized OAuth Token: token_rejected</Message><ErrorCode>401</ErrorCode><Cause>SERVER</Cause></FaultInfo>
+
+1825 [main] ERROR com.intuit.platform  - Error: 401 <?xml version="1.0" encoding="UTF-8" standalone="yes"?><FaultInfo xmlns="http://www.intuit.com/sb/cdm/baseexceptionmodel/xsd"><Message>Unauthorized OAuth Token: token_rejected</Message><ErrorCode>401</ErrorCode><Cause>SERVER</Cause></FaultInfo>
+
+1825 [main] DEBUG com.intuit.platform  - java.lang.NullPointerException
+	at com.intuit.ds.qb.IDSException.<init>(IDSException.java:83)
+	at com.intuit.ds.qb.IDSRestClient.sendRequest(IDSRestClient.java:530)
+	at com.intuit.ds.qb.IDSRestClient.get(IDSRestClient.java:151)
+	at com.intuit.ds.qb.qbo.QBOService.getQBOBaseURI(QBOService.java:24)
+	at com.intuit.ds.qb.IDSRestClient.setServiceTypeProperty(IDSRestClient.java:653)
+	at com.intuit.ds.qb.qbo.QBORequestCreator.doIDSPost(QBORequestCreator.java:28)
+	at com.intuit.ds.qb.qbo.AbstractQBOBaseDataService.findAll(AbstractQBOBaseDataService.java:164)
+	at com.intuit.ds.qb.qbo.QBOCustomerService.findAll(QBOCustomerService.java:127)
+	at users.nluthra.customer.CustomerFactory.getCustomers(CustomerFactory.java:71)
+	at users.nluthra.customer.CustomerFactory.printCustomers(CustomerFactory.java:60)
+	at users.nluthra.NLTest1.main(NLTest1.java:8)
+
+1825 [main] DEBUG com.intuit.platform  - java.lang.NullPointerException
+	at com.intuit.ds.qb.IDSException.<init>(IDSException.java:83)
+	at com.intuit.ds.qb.IDSRestClient.sendRequest(IDSRestClient.java:530)
+	at com.intuit.ds.qb.IDSRestClient.get(IDSRestClient.java:151)
+	at com.intuit.ds.qb.qbo.QBOService.getQBOBaseURI(QBOService.java:24)
+	at com.intuit.ds.qb.IDSRestClient.setServiceTypeProperty(IDSRestClient.java:653)
+	at com.intuit.ds.qb.qbo.QBORequestCreator.doIDSPost(QBORequestCreator.java:28)
+	at com.intuit.ds.qb.qbo.AbstractQBOBaseDataService.findAll(AbstractQBOBaseDataService.java:164)
+	at com.intuit.ds.qb.qbo.QBOCustomerService.findAll(QBOCustomerService.java:127)
+	at users.nluthra.customer.CustomerFactory.getCustomers(CustomerFactory.java:71)
+	at users.nluthra.customer.CustomerFactory.printCustomers(CustomerFactory.java:60)
+	at users.nluthra.NLTest1.main(NLTest1.java:8)
+
+1826 [main] DEBUG com.intuit.platform  - java.lang.NullPointerException
+	at com.intuit.ds.qb.IDSException.<init>(IDSException.java:83)
+	at com.intuit.ds.qb.IDSRestClient.sendRequest(IDSRestClient.java:530)
+	at com.intuit.ds.qb.IDSRestClient.get(IDSRestClient.java:151)
+	at com.intuit.ds.qb.qbo.QBOService.getQBOBaseURI(QBOService.java:24)
+	at com.intuit.ds.qb.IDSRestClient.setServiceTypeProperty(IDSRestClient.java:653)
+	at com.intuit.ds.qb.qbo.QBORequestCreator.doIDSPost(QBORequestCreator.java:28)
+	at com.intuit.ds.qb.qbo.AbstractQBOBaseDataService.findAll(AbstractQBOBaseDataService.java:164)
+	at com.intuit.ds.qb.qbo.QBOCustomerService.findAll(QBOCustomerService.java:127)
+	at users.nluthra.customer.CustomerFactory.getCustomers(CustomerFactory.java:71)
+	at users.nluthra.customer.CustomerFactory.printCustomers(CustomerFactory.java:60)
+	at users.nluthra.NLTest1.main(NLTest1.java:8)
+: nested: null
+1826 [main] DEBUG com.intuit.platform  - java.lang.NullPointerException
+	at com.intuit.ds.qb.IDSException.<init>(IDSException.java:83)
+	at com.intuit.ds.qb.IDSRestClient.sendRequest(IDSRestClient.java:530)
+	at com.intuit.ds.qb.IDSRestClient.get(IDSRestClient.java:151)
+	at com.intuit.ds.qb.qbo.QBOService.getQBOBaseURI(QBOService.java:24)
+	at com.intuit.ds.qb.IDSRestClient.setServiceTypeProperty(IDSRestClient.java:653)
+	at com.intuit.ds.qb.qbo.QBORequestCreator.doIDSPost(QBORequestCreator.java:28)
+	at com.intuit.ds.qb.qbo.AbstractQBOBaseDataService.findAll(AbstractQBOBaseDataService.java:164)
+	at com.intuit.ds.qb.qbo.QBOCustomerService.findAll(QBOCustomerService.java:127)
+	at users.nluthra.customer.CustomerFactory.getCustomers(CustomerFactory.java:71)
+	at users.nluthra.customer.CustomerFactory.printCustomers(CustomerFactory.java:60)
+	at users.nluthra.NLTest1.main(NLTest1.java:8)
+: nested: null
