@@ -15,9 +15,8 @@
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
 	<script type="text/javascript" src="http://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-
 	<script type="text/javascript" src="<%=WebUtils.APPCENTER_URL%>/Content/IA/intuit.ipp.anywhere.js"></script>
+	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDoe1ngg_rQupWyBfxcng84qTwWZK1A-Jg&sensor=false"></script>
 	
 	<script>intuit.ipp.anywhere.setup({
     		menuProxy: '<%=WebUtils.APP_URL%>/bluedot.htm',
@@ -25,12 +24,43 @@
 	});
 	</script>
 
+
+	<script type="text/javascript">
+		var geocoder;
+		var map;
+
+    	function initialize() {
+			geocoder = new google.maps.Geocoder();
+        	var myOptions = {
+          		center: new google.maps.LatLng(37.43021, -122.09822),
+          		zoom: 16,
+          		mapTypeId: google.maps.MapTypeId.ROADMAP
+        	};
+        	map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+      	}
+
+		function getSelected(){
+			var row = $('#tt').datagrid('getSelected');
+			if (row){
+		 		geocoder.geocode( { 'address': row.custmoerAddress}, function(results, status) {
+			 		if (status == google.maps.GeocoderStatus.OK) {
+						map.setCenter(results[0].geometry.location);
+						var marker = new google.maps.Marker({map: map, position: results[0].geometry.location});
+	      			} 
+			 		else {
+	        			alert("Invalid Address");
+	      			}
+	    		});
+			}
+		}
+</script>
+
 </head>
-<body >
+<body onload="initialize()">
 <div id="wrapper">
 	
     <div id="header">
-    	<div class="logo"><h1><a href="#">Neeraj Luthra's Test Application</a></h1></div>
+    	<div class="logo"><h1><a href="#">Map My Customers</a></h1></div>
     	<div class="topNavigation">
         	<ul>
             	<li><a href="javascript:void(0)" onclick="return intuit.ipp.anywhere.logout(function () { window.location.href = '<%=WebUtils.APP_URL%>/logout.htm'; });"><b>Sign out</b></a></li>
@@ -44,13 +74,12 @@
             </div>
             <div class="primaryNavigation">
             	<ul>
-                	<li class="active"><a href="home.htm">Home</a></li>
+                	<li class="active"><a href="#">Home</a></li>
                 	<li><a href="settings.htm">Settings</a></li>
                 </ul>
             </div>
         </div>
         <div class="container">
-        	<%--
         	<div class="welcome">
             	<h3>Welcome, 
             		<span class="username">
@@ -65,9 +94,7 @@
             	</h3>
                 <p><a href="http://www.intuit.com/">Intuit: Going Beyond Innovation</a> As the world evolves, so do we. Yet we remain driven by our passion for inventing solutions to solve important problems, perfecting those solutions and delighting our customers.</p>
             </div>
-            	 --%>
             <div class="blocks">
-        	<%--
             	<div class="block latestNews">
                 	<h3>Latest News</h3>
                     <ul>
@@ -90,37 +117,30 @@
                     </ul>
                     <a href="http://about.intuit.com/about_intuit/press_coverage/" class="readMore">Show More</a>
                 </div>
-                        	 --%>
-                
                 <div class="block keyFeatures">
-                	<h3>Sample Data</h3>
+                	<h3>Key Features</h3>
 					<%
 					String connectionStatus = (String) session
 							.getAttribute("connectionStatus");
 					if (connectionStatus != null
 							&& connectionStatus.equalsIgnoreCase("authorized")) {
 					%>
-					<%--
 						<p> Welcome QuickBooks user! To get started, use following links.</p>
 						<br />
 						<p>To see the applications available to the user, select the Intuit "blue dot" menu.</p>
 						<br />
 						<p>The OAuth flow has been completed. Application now has an authorized access token, it can access QuickBooks data.</p>
 						<br />
-						 --%>
 					<ul>
-						<li><b><a href="vendors.htm" style="color:#0000FF;">Get All Vendors with open balance</a></b></li>
-						<li><b><a href="customers.htm" style="color:#0000FF;">Get All Customers from Quickbooks</a></b></li>
+						<li><b><a href="customers.htm" style="color:#0000FF;">Get All QuickBooks Customers</a></b></li>
 					</ul>
 
 					<ipp:blueDot></ipp:blueDot>
 					<%
 						} else {
 					%>
-					<%--
 					<p>Do you use QuickBooks? Enable QuickBooks integration to seamlessly connect your accounting software with your work in AditiApp.</p>
 					<br />
-					 --%>
 					<ul>
 						<li><b><a href="settings.htm" style="color:#660033;">Connect Now ....</a></b></li>
 					</ul>						
@@ -129,12 +149,10 @@
 						}
 					%>
                 </div>
-                <%--
                 <div class="block map">
                 	<h3>Map the User</h3>
                     <div class="googleMap" id="googleMap" ></div>
                 </div>
-                 --%>
             </div>
         </div>
         <div class="container">
@@ -142,7 +160,6 @@
 				<div class="smallHeading">
 					<h2>Listing all Customers</h2>
 				</div>
-				    <div id="chart_div" style="width: 900px; height: 500px;"></div>
 				<div>
 					<p>
 						<a href="home.htm">Hide</a>
@@ -151,7 +168,6 @@
 					<table id="tt" class="easyui-datagrid" style="width:900px;height:auto;" rownumbers="true" singleSelect="true">
 						<thead>
 							<tr>
-								<th field="custmoerId" width="200"><b>Customer ID</b></th>
 								<th field="custmoerName" width="200"><b>Customer Name</b></th>
 								<th field="jobStatus" width="100"><b>Job Status</b></th>
 								<th field="custmoerAddress" width="500"><b>Customer Address</b></th>
@@ -160,8 +176,7 @@
 						</thead>                           
 						<tbody>                            
 							<c:forEach items="${customerList}" var="customer">
-							<tr>    
-								<td>${customer.id}</td>                       
+							<tr>                           
 								<td>${customer.name}</td>            
 								<c:forEach var="address" items="${customer.address}">
 									<c:set var="completeAddress" value="${address.line1} ${address.city} ${address.country} ${address.postalCode}"/>
@@ -170,64 +185,6 @@
 								<td>${completeAddress}</td>
 								<td><a href="javascript:void(0)" onclick="getSelected()">Map It</a>
 								<c:set var="completeAddress" value=""/>
-							</tr> 
-							</c:forEach>
-						</tbody>                           
-					</table>
-				</div>
-			</c:if>
-        	<c:if test="${not empty vendorList}">
-        	
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      function drawChart(rows) {
-        var data = google.visualization.arrayToDataTable(rows);
-
-        var options = {
-          title: 'Outstanding Vendors'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
-    var vendors = [
-		['Vendor', 'Open Balance'],
-		<c:forEach items="${vendorList}" var="vendor">
-			['${vendor.name}', ${vendor.openBalance.amount}],
-		</c:forEach>  
-	];
-
-
-      google.setOnLoadCallback(function() {
-    	  $(function() {
-    	    drawChart(vendors);
-    	  });
-    	});
-      
-
-    </script>
-        	
-				<div class="smallHeading">
-					<h2>Listing all Vendors</h2>
-				</div>
-				    <div id="piechart" style="width: 900px; height: 500px;"></div>
-				<div>
-					<p>
-						<a href="home.htm">Hide</a>
-					</p>
-					<br />
-					<table id="tt2" class="easyui-datagrid" style="width:400px;height:auto;" rownumbers="true" singleSelect="true">
-						<thead>
-							<tr>
-								<th field="vendorName" width="300"><b>Vendor Name</b></th>
-								<th field="jobStatus" width="100"><b>Open Balance</b></th>
-							</tr>                          
-						</thead>                           
-						<tbody>   
-							<c:forEach items="${vendorList}" var="vendor">
-							<tr>    
-								<td>${vendor.name}</td>            
-								<td>${vendor.openBalance.amount}</td>
 							</tr> 
 							</c:forEach>
 						</tbody>                           

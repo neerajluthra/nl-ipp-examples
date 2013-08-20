@@ -16,7 +16,12 @@
 <div id="wrapper">
 	
     <div id="header">
-    	<div class="logo"><h1><a href="#">Neeraj Luthra's Test Application</a></h1></div>
+    	<div class="logo"><h1><a href="#">Map My Customers</a></h1></div>
+        <div class="topNavigation">
+        	<ul>
+            	<li><a href="#" title="Coming Soon">Sign Up</a></li>
+            </ul>
+        </div>
     </div>
     <div id="body" class="login">
     	
