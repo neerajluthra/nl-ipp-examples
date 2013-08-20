@@ -96,8 +96,6 @@ public class HomeController {
 		LOG.info("HomeController -> getCustomers()");
 
 		final HttpSession session = request.getSession();
-		final List<QBCustomer> customerList = new ArrayList<QBCustomer>();
-		final List<QBEmployee> employeeList = new ArrayList<QBEmployee>();
 
 		final String accesstoken = (String) session.getAttribute("accessToken");
 		final String accessstokensecret = (String) session
@@ -111,23 +109,18 @@ public class HomeController {
 			LOG.error("Error: PlatformSessionContext is null.");
 		}
 
-		QBCustomerService customerService = null;
+		QBCustomerService vService = null;
+		List<QBCustomer> result = new ArrayList<QBCustomer>();
 		try {
-			QBCustomerService service = QBServiceFactory.getService(context,
+			vService = QBServiceFactory.getService(context,
 					QBCustomerService.class);
-			customerList.addAll(service.findAll(context, 1, 100));
-
-			QBVendorService vService = QBServiceFactory.getService(context,
-					QBVendorService.class);
-			List<QBVendor> vendors = vService.findAll(context, 1, 100);
-			for (QBVendor v : vendors) {
-				BigDecimal amount = v.getOpenBalance().getAmount();
+			List<QBCustomer> customers = vService.findAll(context, 1, 100);
+			for (QBCustomer c : customers) {
+				BigDecimal amount = c.getOpenBalance().getAmount();
 				if (amount != null && amount.compareTo(BigDecimal.ZERO) == 1) {
-					System.out.println(v.getName());
-					System.out.println(v.getOpenBalance().getAmount());
+					result.add(c);
 				}
 			}
-
 		} catch (QBInvalidContextException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -135,8 +128,7 @@ public class HomeController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		model.addAttribute("customerList", customerList);
-		System.out.println("customer count:" + customerList.size());
+		model.addAttribute("customerList", result);
 		return "home";
 	}
 
@@ -147,7 +139,7 @@ public class HomeController {
 	@RequestMapping(value = "/vendors.htm", method = RequestMethod.GET)
 	public String getVendors(final HttpServletRequest request,
 			final Model model) {
-		LOG.info("HomeController -> getCustomers()");
+		LOG.info("HomeController -> getVendors()");
 
 		final HttpSession session = request.getSession();
 

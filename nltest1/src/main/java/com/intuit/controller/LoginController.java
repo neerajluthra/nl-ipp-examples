@@ -39,9 +39,9 @@ public class LoginController {
 
 		final HttpSession session = request.getSession();
 
-		if ("ippuser".equals(userName)
-				&& "password".equals(passCode)) {
-			session.setAttribute("displayUserName", "IPP User");
+		if ("neerajluthra".equals(userName)
+				&& "DevIpp1!".equals(passCode)) {
+			session.setAttribute("displayUserName", "Neeraj Luthra");
 			session.setAttribute("emailMapped", "ippuser@intuit.com");
 			session.setAttribute("firstName", null);
 			session.setAttribute("lastName", null);

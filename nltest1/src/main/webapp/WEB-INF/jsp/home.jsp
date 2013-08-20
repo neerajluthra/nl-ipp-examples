@@ -92,8 +92,6 @@
                 </div>
                         	 --%>
                 
-                <div class="block keyFeatures">
-                	<h3>Sample Data</h3>
 					<%
 					String connectionStatus = (String) session
 							.getAttribute("connectionStatus");
@@ -108,10 +106,15 @@
 						<p>The OAuth flow has been completed. Application now has an authorized access token, it can access QuickBooks data.</p>
 						<br />
 						 --%>
+						 <h3>
 					<ul>
-						<li><b><a href="vendors.htm" style="color:#0000FF;">Get All Vendors with open balance</a></b></li>
-						<li><b><a href="customers.htm" style="color:#0000FF;">Get All Customers from Quickbooks</a></b></li>
+						<li><b><a href="home.htm" style="color:#0000FF;">Home</a></b></li>
+						<li>&nbsp;</li>
+						<li><b><a href="vendors.htm" style="color:#0000FF;">Get All Vendors with non-zero Open Balance</a></b></li>
+						<li>&nbsp;</li>
+						<li><b><a href="customers.htm" style="color:#0000FF;">Get All Customers with Payments Due</a></b></li>
 					</ul>
+					</h3>
 
 					<ipp:blueDot></ipp:blueDot>
 					<%
@@ -128,7 +131,6 @@
 						session.setAttribute("flowType", "connect_button");
 						}
 					%>
-                </div>
                 <%--
                 <div class="block map">
                 	<h3>Map the User</h3>
@@ -138,101 +140,11 @@
             </div>
         </div>
         <div class="container">
-        	<c:if test="${not empty customerList}">
-				<div class="smallHeading">
-					<h2>Listing all Customers</h2>
-				</div>
-				    <div id="chart_div" style="width: 900px; height: 500px;"></div>
-				<div>
-					<p>
-						<a href="home.htm">Hide</a>
-					</p>
-					<br />
-					<table id="tt" class="easyui-datagrid" style="width:900px;height:auto;" rownumbers="true" singleSelect="true">
-						<thead>
-							<tr>
-								<th field="custmoerId" width="200"><b>Customer ID</b></th>
-								<th field="custmoerName" width="200"><b>Customer Name</b></th>
-								<th field="jobStatus" width="100"><b>Job Status</b></th>
-								<th field="custmoerAddress" width="500"><b>Customer Address</b></th>
-								<th field="mapAddress" width="100"><b>Map</b></th>
-							</tr>                          
-						</thead>                           
-						<tbody>                            
-							<c:forEach items="${customerList}" var="customer">
-							<tr>    
-								<td>${customer.id}</td>                       
-								<td>${customer.name}</td>            
-								<c:forEach var="address" items="${customer.address}">
-									<c:set var="completeAddress" value="${address.line1} ${address.city} ${address.country} ${address.postalCode}"/>
-								</c:forEach>
-								<td>${customer.jobInfo.status}</td>
-								<td>${completeAddress}</td>
-								<td><a href="javascript:void(0)" onclick="getSelected()">Map It</a>
-								<c:set var="completeAddress" value=""/>
-							</tr> 
-							</c:forEach>
-						</tbody>                           
-					</table>
-				</div>
+			<c:if test="${not empty customerList}">
+	        	<%@include file="customers.jsp" %>
 			</c:if>
-        	<c:if test="${not empty vendorList}">
-        	
-    <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      function drawChart(rows) {
-        var data = google.visualization.arrayToDataTable(rows);
-
-        var options = {
-          title: 'Outstanding Vendors'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-        chart.draw(data, options);
-      }
-    var vendors = [
-		['Vendor', 'Open Balance'],
-		<c:forEach items="${vendorList}" var="vendor">
-			['${vendor.name}', ${vendor.openBalance.amount}],
-		</c:forEach>  
-	];
-
-
-      google.setOnLoadCallback(function() {
-    	  $(function() {
-    	    drawChart(vendors);
-    	  });
-    	});
-      
-
-    </script>
-        	
-				<div class="smallHeading">
-					<h2>Listing all Vendors</h2>
-				</div>
-				    <div id="piechart" style="width: 900px; height: 500px;"></div>
-				<div>
-					<p>
-						<a href="home.htm">Hide</a>
-					</p>
-					<br />
-					<table id="tt2" class="easyui-datagrid" style="width:400px;height:auto;" rownumbers="true" singleSelect="true">
-						<thead>
-							<tr>
-								<th field="vendorName" width="300"><b>Vendor Name</b></th>
-								<th field="jobStatus" width="100"><b>Open Balance</b></th>
-							</tr>                          
-						</thead>                           
-						<tbody>   
-							<c:forEach items="${vendorList}" var="vendor">
-							<tr>    
-								<td>${vendor.name}</td>            
-								<td>${vendor.openBalance.amount}</td>
-							</tr> 
-							</c:forEach>
-						</tbody>                           
-					</table>
-				</div>
+			<c:if test="${not empty vendorList}">
+				<%@include file="vendors.jsp" %>
 			</c:if>
         </div>
     </div>
