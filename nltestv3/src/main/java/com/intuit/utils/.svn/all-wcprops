@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/java/com/intuit/utils
+END
+WebUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/java/com/intuit/utils/WebUtils.java
+END
+OauthHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/java/com/intuit/utils/OauthHelper.java
+END
+OpenIDHelper.java
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/java/com/intuit/utils/OpenIDHelper.java
+END

@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/398/trunk/IntuitAnywhere/src/main/resources
+END
+log4j.properties
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/resources/log4j.properties
+END
+intuit-config.xml
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/resources/intuit-config.xml
+END
+ia.properties
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/resources/ia.properties
+END

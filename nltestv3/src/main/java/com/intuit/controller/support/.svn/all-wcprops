@@ -1,0 +1,23 @@
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/java/com/intuit/controller/support
+END
+BluedotController.java
+K 25
+svn:wc:ra_dav:version-url
+V 131
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/java/com/intuit/controller/support/BluedotController.java
+END
+OAuthController.java
+K 25
+svn:wc:ra_dav:version-url
+V 129
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/java/com/intuit/controller/support/OAuthController.java
+END
+OpenIdController.java
+K 25
+svn:wc:ra_dav:version-url
+V 130
+/svn/repos/ipp_java_devkit_3_0/!svn/ver/390/trunk/IntuitAnywhere/src/main/java/com/intuit/controller/support/OpenIdController.java
+END
