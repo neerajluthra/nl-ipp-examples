@@ -20,6 +20,7 @@ import com.intuit.ipp.core.Context;
 import com.intuit.ipp.core.ServiceType;
 import com.intuit.ipp.data.AccountBasedExpenseLineDetail;
 import com.intuit.ipp.data.Customer;
+import com.intuit.ipp.data.Invoice;
 import com.intuit.ipp.data.Line;
 import com.intuit.ipp.data.LineDetailTypeEnum;
 import com.intuit.ipp.data.PaymentTypeEnum;
@@ -88,7 +89,9 @@ public class HomeController {
 		final List<Customer> customerList = new ArrayList<Customer>();
 
 		final String accesstoken = (String) session.getAttribute("accessToken");
+		System.out.println("accesstoken:"+accesstoken);
 		final String accessstokensecret = (String) session.getAttribute("accessTokenSecret");
+		System.out.println("accessTokenSecret:"+accessstokensecret);
 		final String realmID = (String) session.getAttribute("realmId");
 		final String dataSource = (String) session.getAttribute("dataSource");
 		
@@ -109,12 +112,23 @@ public class HomeController {
 		DataService service = new DataService(context);
 		
 		try {
+			
 			// Using the service, retrieve all customers and display their names.
+			final List<Invoice> invoices = service.findAll(new Invoice());
+			for (Invoice invoice : invoices) {
+				System.out.println("InvoiceId:" + invoice.getId());
+				System.out.println("InvoiceCurrencyRef:" + invoice.getCurrencyRef().getName());
+				System.out.println("InvoiceCurrencyRef:" + invoice.getCurrencyRef().getValue());
+				System.out.println("InvoiceCustomerRef:" + invoice.getCustomerRef().getName());
+				System.out.println("InvoiceCustomerRef:" + invoice.getCustomerRef().getValue());
+			}
+
 			final List<Customer> customers = service.findAll(new Customer());
 
 			for (Customer customer : customers) {
 				final String customerName = customer.getDisplayName();
 				LOG.info("customerName : " + customerName);
+				System.out.println("CustomerId:" + customer.getId());
 				customerList.add(customer);
 
 			}
