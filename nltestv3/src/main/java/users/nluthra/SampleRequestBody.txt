@@ -1,0 +1,56 @@
+<?xml version= 1.0 encoding= utf-8 standalone= yes?>
+<Bill xmlns="http://schema.intuit.com/finance/v3">
+    <TxnDate>2012-12-19</TxnDate>
+    <CurrencyRef name="Australian Dollar">AUD</CurrencyRef>
+    <ExchangeRate>1</ExchangeRate>
+    <Line>
+      <Id>1</Id>
+      <Description>Test Product 1 Bulk</Description>
+      <Amount>180.00</Amount>
+      <DetailType>ItemBasedExpenseLineDetail</DetailType>
+      <ItemBasedExpenseLineDetail>
+        <ItemRef name="TestProduct1">3</ItemRef>
+        <UnitPrice>80</UnitPrice>
+        <Qty>1</Qty>
+        <TaxCodeRef>4</TaxCodeRef>
+        <BillableStatus>NotBillable</BillableStatus>
+      </ItemBasedExpenseLineDetail>
+      <AccountBasedExpenseLineDetail>
+        <AccountRef name="Purchases">75</AccountRef>
+      </AccountBasedExpenseLineDetail>
+    </Line>
+    <Line>
+      <Id>2</Id>
+      <Description>Test Product 2 Bulk</Description>
+      <Amount>1000.00</Amount>
+      <DetailType>ItemBasedExpenseLineDetail</DetailType>
+      <ItemBasedExpenseLineDetail>
+        <ItemRef name="TestProduct2">4</ItemRef>
+        <UnitPrice>10</UnitPrice>
+        <Qty>100</Qty>
+        <TaxCodeRef>4</TaxCodeRef>
+        <BillableStatus>NotBillable</BillableStatus>
+      </ItemBasedExpenseLineDetail>
+      <AccountBasedExpenseLineDetail>
+        <AccountRef name="Purchases">75</AccountRef>
+      </AccountBasedExpenseLineDetail>
+    </Line>
+    <TxnTaxDetail>
+      <TaxLine>
+        <Amount>308.00</Amount>
+        <DetailType>TaxLineDetail</DetailType>
+        <TaxLineDetail>
+          <TaxRateRef>3</TaxRateRef>
+          <PercentBased>true</PercentBased>
+          <TaxPercent>10</TaxPercent>
+          <NetAmountTaxable>1080.00</NetAmountTaxable>
+        </TaxLineDetail>
+      </TaxLine>
+    </TxnTaxDetail>
+    <VendorRef name="NLSupplier1">7</VendorRef>
+    <APAccountRef name="Accounts Payable (A/P)">89</APAccountRef>
+    <TotalAmt>1188.00</TotalAmt>
+    <GlobalTaxCalculation>TaxExcluded</GlobalTaxCalculation>
+    <SalesTermRef>3</SalesTermRef>
+    <DueDate>2014-01-22</DueDate>
+  </Bill>
